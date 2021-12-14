@@ -4,12 +4,12 @@
 
 ```
 class Point {
-	public double x;
-   public double y;
+    public double x;
+    public double y;
 }
 
 public static void main(String[] args) {
-	 Point p = new Point();
+    Point p = new Point();
     p.x = 123;
     System.out.println(p.x);
 }
@@ -23,7 +23,7 @@ public static void main(String[] args) {
 > 접근자와 변경자 설정을 통해 데이터를 캡슐화
 ```
 public class Point2 {
-	private double x;
+    private double x;
     private double y;
 
 	public Point2(double x, double y) {
