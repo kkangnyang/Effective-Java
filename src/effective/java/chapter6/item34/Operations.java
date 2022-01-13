@@ -1,4 +1,4 @@
-package effective.java.chapter5.item34;
+package effective.java.chapter6.item34;
 
 public enum Operations {
 	PLUS, MINUS, TIMES, DIVIDE;

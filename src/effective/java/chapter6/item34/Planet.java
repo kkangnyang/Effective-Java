@@ -1,4 +1,4 @@
-package effective.java.chapter5.item34;
+package effective.java.chapter6.item34;
 
 public enum Planet {
 	MERCURY(3.302e+23, 2.439e6),

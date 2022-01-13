@@ -7,13 +7,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Item32 {
 
 	public static void main(String[] args) {
+		
 		/*
 		List<String> stringLists = List.of("42");
 		dangerous(stringLists);
 		*/
 		
 		String[] attributes = pickTwo("좋은", "빠른", "저렴한");
-		List<String> attributes_2 = pickTwo2("좋은", "빠른", "저렴한");
+		//List<String> attributes_2 = pickTwo2("좋은", "빠른", "저렴한");
 	}
 	
 	public static void example(String... args) {
