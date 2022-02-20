@@ -97,3 +97,46 @@ public static void main(String[] args) {
 
 
 List 인터페이스가 remove(Object)와 remove(int) 를 다중정의 했는데, 그 영향을 아래 예제로 확인할 수 있다.
+
+```java
+public static void main(String[] args) {
+	Set<Integer> set = new TreeSet<>();
+    List<Integer> list = new ArrayList<>();
+
+    for (int i = -3; i < 3; i++) {
+        set.add(i);
+        list.add(i);
+    }
+    for (int i = 0; i < 3; i++) {
+        set.remove(i);
+        list.remove(i);
+    }
+    System.out.println(set + " " + list);
+    
+    // [-3, -2, -1] [-2, 0, 2]
+}
+```
+
+또한, 자바8에서 도입한 람다와 메서드 참조 역시 다중정의 시에 혼란을 키웠다.
+
+```java
+// 1번
+new Thread(System.out::println).start();
+// 2번
+ExecutorService exec = Executors.newCachedThreadPool();
+exec.submit(System.out::println);
+```
+
+2번 케이스는 에러가 난다. 참조된 메서드 (println)과 호출한 메서드(submit) 양쪽 모두 다중정의되어있기 때문이다. 따라서 메서드를 다중정의할 때, 서로 다른 함수형 인터페이스라도 **같은 위치의 인수로 받아서는 안된다.**
+
+어떤 다중정의 메서드가 불리는지 몰라도 기능이 똑같다면 신경쓰지 않아도 된다. 예를 들어, String의 contentEquals(StringBuffer) 메서드, contentEquals(CharSequence) 메서드의 기능은 동일하다!
+
+이럴 경우 보통 상대적으로 더 특수한 다중정의 메서드에서 덜 특수한(더 일반적인) 다중정의 메서드로 일을 넘겨버리는 것이다.
+
+```java
+public boolean contentEquals(StringBuffer sb) {
+  return contentEquals((CharSequence) sb);
+}
+```
+
+물론 예외도 있다. String.valueOf(char[]) 와 String.valueOf(Object)는 같은 객체를 건네더라도 전혀 다른일을 수행한다.
