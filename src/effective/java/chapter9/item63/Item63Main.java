@@ -38,5 +38,12 @@ public class Item63Main {
 			b.append(numItems.get(i));
 		return b.toString();
 	}
+	
+	public static String statement3() {
+		StringBuffer b = new StringBuffer(numItems.size());
+		for (int i = 0; i < numItems.size(); i++)
+			b.append(numItems.get(i));
+		return b.toString();
+	}
 
 }
